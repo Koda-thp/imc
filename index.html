@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <head>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            max-width: 400px; 
+            margin: 50px auto; 
+            padding: 20px;
+        }
+        input, button { 
+            padding: 10px; 
+            margin: 5px 0; 
+            width: 100%; 
+            box-sizing: border-box;
+        }
+        button { 
+            background: #007bff; 
+            color: white; 
+            border: none; 
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+</head>
+<body>
+    <H1>Suis-je Gros ?</H1>
+    <input type="number" id="poids" placeholder="Poids (kg)">
+    <input type="number" id="taille" placeholder="Taille (m)">
+     <button onclick="calculateBMI()">Calculer</button>
+     <h1>Resultat :</h1> <p id="result"></p>
+</body>
+<script src="script.js"></script>
+</html>
