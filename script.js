@@ -1,6 +1,6 @@
 function calculateBMI() {
     const poids = parseFloat(document.getElementById('poids').value);
-    const taille = parseFloat(document.getElementById('taille').value);   
+    const taille = parseFloat(document.getElementById('taille').value);  
     // 2. Convertit ces valeurs en nombres (avec parseFloat)
 
     // 3. Valide les données (si invalide, arrête tout)
@@ -18,6 +18,9 @@ function calculateBMI() {
     // 6. Affiche le résultat
         displayResult(bmi, category);
 
+    const person =  RecordCreator(poids, taille, category, result);
+    historyManager.addRecord(person);
+    displayHistory();
 }
 function validateInput(poids, taille) {
         if (isNaN(poids) || isNaN(taille)) {
@@ -86,4 +89,42 @@ function displayResult(bmi, category) {
         resultElement.style.color = "red";
     }
     // 4. Affiche le tout dans la page
+}
+
+function RecordCreator (poids, taille, result, category){
+    return{
+        poids,
+        taille,
+        result,
+        category,
+        date: new Date().toLocaleDateString()
+
+    }
+
+}
+const createHistoryManager = () => {
+  const history = []; // ⬅️ DONNÉE PRIVÉE (closure)
+  
+  return {
+    addRecord: (record) => {
+      history.unshift(record);
+      if (history.length > 5) {
+        history.pop();
+      }
+    },
+    
+    getHistory: () => {
+      return [...history]; // Copie pour protection
+    },
+    
+    clearHistory: () => {
+      history.length = 0;
+    }
+  };
+};
+const historyManager = createHistoryManager(); // ← INSTANCIATION
+
+function displayHistory() { // Pas de paramètre
+    const historique = historyManager.getHistory(); // Appel de la méthode
+    // Maintenant tu peux utiliser "historique" qui contient le tableau
 }
