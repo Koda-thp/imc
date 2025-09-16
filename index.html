@@ -36,6 +36,11 @@
     <input type="number" id="taille" placeholder="Taille (m)">
      <button onclick="calculateBMI()">Calculer</button>
      <h1>Resultat :</h1> <p id="result"></p>
+     <div id="history">
+    <h3>Historique des calculs</h3>
+    <ul id="history-list"></ul>
+    <button onclick="clearHistory()">Effacer l'historique</button>
+</div>
 </body>
 <script src="script.js"></script>
 </html>
